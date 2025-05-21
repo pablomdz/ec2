@@ -1,6 +1,7 @@
-Descripcion: Script permite saturar la memoria de la instancia EC2. Esta funcion permite cambiar el porcentaje de memoria
+#Descripcion: Script permite saturar la memoria de la instancia EC2. Esta funcion permite cambiar el porcentaje de memoria
 
-Al crear la instancia se debe agregar las siguientes lineas:
+#Al crear la instancia se debe agregar las siguientes lineas:
+
 #!/bin/bash
 
 # Descargar el archivo de Python desde el repositorio
