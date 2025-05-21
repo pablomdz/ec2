@@ -59,4 +59,4 @@ def update_html():
 
 if __name__ == '__main__':
     update_html()
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=80)
