@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 
 import os
-import subprocess
-import threading
-from flask import Flask, render_template_string
+import time
 import psutil
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
 memory_process = None
 
-# HTML Template
 HTML_TEMPLATE = """
 <html>
+<head>
+    <meta http-equiv="refresh" content="5">
+</head>
 <body>
     <h1>Información de la instancia</h1>
     <p>Nombre del Host: {{ hostname }}</p>
@@ -25,8 +26,7 @@ HTML_TEMPLATE = """
 
 def consume_memory():
     global memory_process
-    # Intentar consumir memoria creando una lista grande
-    memory_process = subprocess.Popen(["python3", "-c", "a = [0] * 10**6"])
+    memory_process = subprocess.Popen(["python3", "-c", "a = [0] * 10**8"])
 
 def stop_memory():
     global memory_process
@@ -53,10 +53,5 @@ def stop():
     stop_memory()
     return "Proceso detenido. <a href='/'>Regresar</a>"
 
-def update_html():
-    while True:
-        threading.Timer(5.0, update_html).start()
-
 if __name__ == '__main__':
-    update_html()
     app.run(host='0.0.0.0', port=80)
